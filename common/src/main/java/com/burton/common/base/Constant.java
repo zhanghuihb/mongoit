@@ -22,4 +22,8 @@ public class Constant {
     public static String WX_AUTHORIZATION_SECRET = "ab0c9a143c4c132da379c90956566e15";
 
     public static String WX_AUTHORIZE_USERINFO_URL = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN";
+
+    public static String LTS_TRIGGER_TIME = "triggerTime";
+
+    public static String LTS_CRON_EXPRESSION = "cronExpression";
 }

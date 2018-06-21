@@ -1,14 +1,15 @@
-package com.burton.core.service.Impl;
+package com.burton.lanbitou.service.Impl;
 
 import com.alibaba.fastjson.JSON;
-import com.burton.core.service.UserService;
+import com.burton.common.dubbo.lts.LtsDubboService;
+import com.burton.lanbitou.service.UserService;
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.Constant;
 import com.burton.common.base.Result;
-import com.burton.core.domain.ConsumerInfo;
-import com.burton.core.domain.XcxUser;
-import com.burton.core.respository.ConsumerInfoRepository;
-import com.burton.core.respository.UserRepository;
+import com.burton.lanbitou.domain.ConsumerInfo;
+import com.burton.lanbitou.domain.XcxUser;
+import com.burton.lanbitou.respository.ConsumerInfoRepository;
+import com.burton.lanbitou.respository.UserRepository;
 import com.burton.common.vo.user.GetAccountInfoResponse;
 import com.burton.common.vo.user.LoginRequest;
 import com.burton.common.vo.user.LoginResponse;
@@ -38,6 +39,9 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private ConsumerInfoRepository consumerInfoRepository;
+
+    @Autowired
+    private LtsDubboService ltsDubboService;
 
     @Override
     public Result<LoginResponse> login(BaseRequest<LoginRequest> baseRequest) throws Exception {
@@ -135,5 +139,11 @@ public class UserServiceImpl implements UserService{
         }else{
             return Result.fail("用户ID不可为空");
         }
+    }
+
+    @Override
+    public Result<?> test() {
+        ltsDubboService.testLtsJob();
+        return null;
     }
 }

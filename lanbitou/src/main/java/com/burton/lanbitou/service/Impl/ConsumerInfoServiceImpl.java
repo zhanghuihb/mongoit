@@ -1,12 +1,12 @@
-package com.burton.core.service.Impl;
+package com.burton.lanbitou.service.Impl;
 
-import com.burton.core.service.ConsumerInfoService;
+import com.burton.lanbitou.service.ConsumerInfoService;
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.Constant;
 import com.burton.common.base.Page;
 import com.burton.common.base.Result;
-import com.burton.core.domain.ConsumerInfo;
-import com.burton.core.respository.ConsumerInfoRepository;
+import com.burton.lanbitou.domain.ConsumerInfo;
+import com.burton.lanbitou.respository.ConsumerInfoRepository;
 import com.burton.common.util.DateAndTimeUtil;
 import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;

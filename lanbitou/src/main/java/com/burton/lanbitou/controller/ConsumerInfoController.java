@@ -1,9 +1,9 @@
-package com.burton.core.controller;
+package com.burton.lanbitou.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.burton.core.service.ConsumerInfoService;
+import com.burton.lanbitou.service.ConsumerInfoService;
 import com.burton.common.base.*;
-import com.burton.core.domain.ConsumerInfo;
+import com.burton.lanbitou.domain.ConsumerInfo;
 import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.GetConsumerInfoByIdRequest;

@@ -1,9 +1,9 @@
-package com.burton.core.service;
+package com.burton.lanbitou.service;
 
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.Page;
 import com.burton.common.base.Result;
-import com.burton.core.domain.ConsumerInfo;
+import com.burton.lanbitou.domain.ConsumerInfo;
 import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.GetConsumerInfosRequest;

@@ -1,4 +1,4 @@
-package com.burton.core.config;
+package com.burton.lanbitou.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

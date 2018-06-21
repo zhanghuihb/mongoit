@@ -1,9 +1,9 @@
-package com.burton.core.service.Impl;
+package com.burton.lanbitou.service.Impl;
 
-import com.burton.core.service.ConsumerCategoryService;
+import com.burton.lanbitou.service.ConsumerCategoryService;
 import com.burton.common.base.Constant;
-import com.burton.core.domain.ConsumerCategory;
-import com.burton.core.respository.ConsumerCategoryRespository;
+import com.burton.lanbitou.domain.ConsumerCategory;
+import com.burton.lanbitou.respository.ConsumerCategoryRespository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.burton.core.domain;
+package com.burton.lanbitou.domain;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;

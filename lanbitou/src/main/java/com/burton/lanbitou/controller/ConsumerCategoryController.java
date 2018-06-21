@@ -1,11 +1,11 @@
-package com.burton.core.controller;
+package com.burton.lanbitou.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.burton.core.service.ConsumerCategoryService;
+import com.burton.lanbitou.service.ConsumerCategoryService;
 import com.burton.common.base.BaseController;
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.BaseResponse;
-import com.burton.core.domain.ConsumerCategory;
+import com.burton.lanbitou.domain.ConsumerCategory;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
