@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/burton.iml" filepath="$PROJECT_DIR$/.idea/burton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lanbitou/lanbitou.iml" filepath="$PROJECT_DIR$/lanbitou/lanbitou.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts/lts.iml" filepath="$PROJECT_DIR$/lts/lts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parentpom/parentpom.iml" filepath="$PROJECT_DIR$/parentpom/parentpom.iml" />
+    </modules>
+  </component>
+</project>
