@@ -140,10 +140,4 @@ public class UserServiceImpl implements UserService{
             return Result.fail("用户ID不可为空");
         }
     }
-
-    @Override
-    public Result<?> test() {
-        ltsDubboService.testLtsJob();
-        return null;
-    }
 }

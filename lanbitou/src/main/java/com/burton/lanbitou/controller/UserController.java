@@ -55,18 +55,4 @@ public class UserController extends BaseController {
             return responseData(BaseResponse.fail(result.getMsg(),result.getShowMsg()));
         }
     }
-
-    @RequestMapping("/test")
-    @ApiOperation(value = "test", httpMethod = "POST", response = BaseResponse.class)
-    private ResponseEntity<String> test(@RequestBody BaseRequest<?> baseRequest){
-        LOGGER.info("test接口请求参数 {}", JSON.toJSONString(baseRequest));
-        baseRequest.validate();
-
-        Result<?> result = userService.test();
-        if(result.isSuccess()){
-            return responseData(BaseResponse.success(result.getData()));
-        }else{
-            return responseData(BaseResponse.fail(result.getMsg(),result.getShowMsg()));
-        }
-    }
 }

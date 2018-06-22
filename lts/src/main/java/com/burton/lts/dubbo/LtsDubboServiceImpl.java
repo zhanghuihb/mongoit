@@ -20,7 +20,7 @@ public class LtsDubboServiceImpl implements LtsDubboService{
     public void testLtsJob() {
         Map<String, String> params = new HashMap<>();
         params.put("key", "value");
-        params.put(Constant.LTS_TRIGGER_TIME, "" + (new Date().getTime() + 10 * 1000));
+        params.put(Constant.LTS_CRON_EXPRESSION, "0/10 * * * * ?");
         LtsJobSubmit.submitJob(params);
     }
 }

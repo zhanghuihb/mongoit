@@ -6,5 +6,5 @@ package com.burton.common.dubbo.lts;
  */
 public interface LtsDubboService {
 
-    void testLtsJob();
+
 }
