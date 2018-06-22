@@ -13,5 +13,5 @@
     <dubbo:registry address="${dubbo.registry.address}" protocol="${dubbo.registry.protocol}" />
 
     <!-- 要引用的服务 -->
-    <dubbo:reference id="ltsDubboService" interface="com.burton.common.dubbo.lts.LtsDubboService" />
+    <dubbo:reference interface="com.burton.common.dubbo.lts.LtsDubboService" id="ltsDubboService" />
 </beans>

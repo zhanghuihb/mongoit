@@ -16,5 +16,5 @@
     <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
 
     <dubbo:service interface="com.burton.common.dubbo.lanbitou.LanbitouDubboService" ref="lanbitouDubboService" retries="0" timeout="6000" />
-    <bean id="lanbitouDubboService" class="com.burton.lanbitou.dubbo.LanbitouDubboServiceImpl" />
+    <bean class="com.burton.lanbitou.dubbo.LanbitouDubboServiceImpl" id="lanbitouDubboService" />
 </beans>
