@@ -1,6 +1,6 @@
-package com.burton.lanbitou.respository;
+package com.burton.user.repository;
 
-import com.burton.lanbitou.domain.XcxUser;
+import com.burton.common.domain.XcxUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

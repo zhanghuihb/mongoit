@@ -3,10 +3,11 @@ package com.burton.lanbitou.service;
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.Page;
 import com.burton.common.base.Result;
-import com.burton.lanbitou.domain.ConsumerInfo;
+import com.burton.common.domain.ConsumerInfo;
 import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.GetConsumerInfosRequest;
+import com.burton.common.vo.user.GetAccountInfoResponse;
 
 import java.util.List;
 
@@ -23,5 +24,7 @@ public interface ConsumerInfoService {
     Result<ConsumerInfo> editConsumerInfo(EditConsumerInfoRequest editConsumerInfoRequest) throws Exception;
 
     Result<ConsumerInfo> addConsumerInfo(AddConsumerInfoRequest addConsumerInfoRequest) throws Exception;
+
+    Result<GetAccountInfoResponse> getAccountInfo(Integer userId);
 
 }

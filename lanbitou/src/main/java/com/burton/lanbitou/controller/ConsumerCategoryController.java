@@ -5,7 +5,7 @@ import com.burton.lanbitou.service.ConsumerCategoryService;
 import com.burton.common.base.BaseController;
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.BaseResponse;
-import com.burton.lanbitou.domain.ConsumerCategory;
+import com.burton.common.domain.ConsumerCategory;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

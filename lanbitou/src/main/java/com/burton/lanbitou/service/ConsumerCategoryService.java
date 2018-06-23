@@ -1,6 +1,6 @@
 package com.burton.lanbitou.service;
 
-import com.burton.lanbitou.domain.ConsumerCategory;
+import com.burton.common.domain.ConsumerCategory;
 
 import java.util.List;
 

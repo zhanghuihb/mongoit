@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/parentpom/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/lanbitou/pom.xml" />
+        <option value="$PROJECT_DIR$/user/pom.xml" />
       </list>
     </option>
   </component>

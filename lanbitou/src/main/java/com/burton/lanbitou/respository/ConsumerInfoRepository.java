@@ -1,6 +1,6 @@
 package com.burton.lanbitou.respository;
 
-import com.burton.lanbitou.domain.ConsumerInfo;
+import com.burton.common.domain.ConsumerInfo;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

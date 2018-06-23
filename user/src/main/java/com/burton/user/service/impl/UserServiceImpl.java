@@ -1,21 +1,18 @@
-package com.burton.lanbitou.service.Impl;
+package com.burton.user.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.burton.common.dubbo.lts.LtsDubboService;
-import com.burton.lanbitou.service.UserService;
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.Constant;
 import com.burton.common.base.Result;
-import com.burton.lanbitou.domain.ConsumerInfo;
-import com.burton.lanbitou.domain.XcxUser;
-import com.burton.lanbitou.respository.ConsumerInfoRepository;
-import com.burton.lanbitou.respository.UserRepository;
-import com.burton.common.vo.user.GetAccountInfoResponse;
+import com.burton.common.domain.XcxUser;
+import com.burton.common.dubbo.lts.LtsDubboService;
 import com.burton.common.vo.user.LoginRequest;
 import com.burton.common.vo.user.LoginResponse;
 import com.burton.common.wx.WXUtil;
 import com.burton.common.wx.login.WXSession;
 import com.burton.common.wx.login.WXUserInfo;
+import com.burton.user.repository.UserRepository;
+import com.burton.user.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,15 +27,12 @@ import java.util.List;
  * @date 2018/6/11 15:47
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private ConsumerInfoRepository consumerInfoRepository;
 
     @Autowired
     private LtsDubboService ltsDubboService;
@@ -117,27 +111,5 @@ public class UserServiceImpl implements UserService{
         }
 
         return null;
-    }
-
-    @Override
-    public Result<GetAccountInfoResponse> getAccountInfo(Integer userId) {
-        if(userId != null && userId != 0){
-            GetAccountInfoResponse response = new GetAccountInfoResponse();
-
-            List<ConsumerInfo> tempList = consumerInfoRepository.getAccountInfo(userId);
-            if(!CollectionUtils.isEmpty(tempList)){
-                tempList.stream().forEach( info -> {
-                    if(Constant.INCOME == info.getDigest()){
-                        response.setTotalIncome(info.getAmount());
-                    }else if(Constant.EXPENDITURE == info.getDigest()){
-                        response.setTotalExpend(info.getAmount());
-                    }
-                });
-            }
-            response.setBalance(response.getTotalIncome() - response.getTotalExpend());
-            return Result.success(response);
-        }else{
-            return Result.fail("用户ID不可为空");
-        }
     }
 }

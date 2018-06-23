@@ -1,11 +1,12 @@
 package com.burton.lanbitou.service.Impl;
 
+import com.burton.common.vo.user.GetAccountInfoResponse;
 import com.burton.lanbitou.service.ConsumerInfoService;
 import com.burton.common.base.BaseRequest;
 import com.burton.common.base.Constant;
 import com.burton.common.base.Page;
 import com.burton.common.base.Result;
-import com.burton.lanbitou.domain.ConsumerInfo;
+import com.burton.common.domain.ConsumerInfo;
 import com.burton.lanbitou.respository.ConsumerInfoRepository;
 import com.burton.common.util.DateAndTimeUtil;
 import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
@@ -18,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -114,6 +116,28 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
             }
         }else{
             return Result.fail("必填参数为空!");
+        }
+    }
+
+    @Override
+    public Result<GetAccountInfoResponse> getAccountInfo(Integer userId) {
+        if(userId != null && userId != 0){
+            GetAccountInfoResponse response = new GetAccountInfoResponse();
+
+            List<ConsumerInfo> tempList = consumerInfoRepository.getAccountInfo(userId);
+            if(!CollectionUtils.isEmpty(tempList)){
+                tempList.stream().forEach( info -> {
+                    if(Constant.INCOME == info.getDigest()){
+                        response.setTotalIncome(info.getAmount());
+                    }else if(Constant.EXPENDITURE == info.getDigest()){
+                        response.setTotalExpend(info.getAmount());
+                    }
+                });
+            }
+            response.setBalance(response.getTotalIncome() - response.getTotalExpend());
+            return Result.success(response);
+        }else{
+            return Result.fail("用户ID不可为空");
         }
     }
 }

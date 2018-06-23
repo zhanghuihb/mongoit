@@ -1,6 +1,6 @@
 package com.burton.lanbitou.respository;
 
-import com.burton.lanbitou.domain.ConsumerCategory;
+import com.burton.common.domain.ConsumerCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

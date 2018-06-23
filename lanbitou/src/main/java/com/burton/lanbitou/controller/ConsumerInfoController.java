@@ -1,9 +1,10 @@
 package com.burton.lanbitou.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.burton.common.vo.user.GetAccountInfoResponse;
 import com.burton.lanbitou.service.ConsumerInfoService;
 import com.burton.common.base.*;
-import com.burton.lanbitou.domain.ConsumerInfo;
+import com.burton.common.domain.ConsumerInfo;
 import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.GetConsumerInfoByIdRequest;
@@ -87,4 +88,18 @@ public class ConsumerInfoController extends BaseController {
     }
 
 
+
+    @RequestMapping("/getAccountInfo")
+    @ApiOperation(value = "查询账户信息", httpMethod = "POST", response = BaseResponse.class)
+    private ResponseEntity<String> getAccountInfo(@RequestBody BaseRequest<?> baseRequest){
+        LOGGER.info("查询账户信息接口请求参数 {}", JSON.toJSONString(baseRequest));
+        baseRequest.validate();
+
+        Result<GetAccountInfoResponse> result = consumerInfoService.getAccountInfo(baseRequest.getUserId());
+        if(result.isSuccess()){
+            return responseData(BaseResponse.success(result.getData()));
+        }else{
+            return responseData(BaseResponse.fail(result.getMsg(),result.getShowMsg()));
+        }
+    }
 }
