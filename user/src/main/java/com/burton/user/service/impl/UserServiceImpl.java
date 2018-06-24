@@ -5,7 +5,6 @@ import com.burton.common.base.BaseRequest;
 import com.burton.common.base.Constant;
 import com.burton.common.base.Result;
 import com.burton.common.domain.XcxUser;
-import com.burton.common.dubbo.lts.LtsDubboService;
 import com.burton.common.vo.user.LoginRequest;
 import com.burton.common.vo.user.LoginResponse;
 import com.burton.common.wx.WXUtil;
@@ -33,9 +32,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private LtsDubboService ltsDubboService;
 
     @Override
     public Result<LoginResponse> login(BaseRequest<LoginRequest> baseRequest) throws Exception {

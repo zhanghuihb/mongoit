@@ -15,6 +15,9 @@ public class Constant {
     public static final int INCOME = 1;// 收入
     public static final int EXPENDITURE = 2;//  支出
 
+    public static final int  REFRESS_ACCESS_TOKEN_YES = 1;// 需要定时刷新的app
+    public static final int REFRESS_ACCESS_TOKEN_NO = 2;//  不需要定时刷新的app
+
     public static String WX_AUTHORIZATION_PATH = "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
 
     public static String WX_AUTHORIZATION_APPID = "wxfca30b8b12799b70";

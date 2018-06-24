@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="${dubbo.application.name}_provider" />
+
+    <!-- 注册中心暴露服务地址 -->
+    <dubbo:registry address="${dubbo.registry.address}" protocol="${dubbo.registry.protocol}"/>
+
+    <!-- 在指定端口暴露服务 -->
+    <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
+
+    <dubbo:service interface="com.burton.common.dubbo.user.UserDubboService" ref="userDubboService" retries="0" timeout="6000" />
+    <bean class="com.burton.user.dubbo.UserDubboServiceImpl" id="userDubboService" />
+</beans>

@@ -6,7 +6,4 @@ package com.burton.common.dubbo.lanbitou;
  */
 public interface LanbitouDubboService {
 
-    /** 定时刷新AccessToken  */
-    void refreshAccessToken();
-
 }

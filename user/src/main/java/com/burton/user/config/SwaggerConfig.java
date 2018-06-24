@@ -1,4 +1,4 @@
-package com.burton.lts.config;
+package com.burton.user.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.burton.lts.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.burton.user.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -34,7 +34,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("lts")
                 .description("api")
-                .termsOfServiceUrl("http://localhost:8082/lts/swagger-ui.html")
+                .termsOfServiceUrl("http://localhost:8081/user/swagger-ui.html")
                 .version("1.0")
                 .build();
     }

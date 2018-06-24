@@ -10,8 +10,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class LanbitouDubboServiceImpl implements LanbitouDubboService{
 
-    @Override
-        public void refreshAccessToken() {
-
-        }
 }
