@@ -1,11 +1,9 @@
 package com.burton.lanbitou.service.Impl;
 
+import com.alibaba.fastjson.JSON;
+import com.burton.common.base.*;
 import com.burton.common.vo.user.GetAccountInfoResponse;
 import com.burton.lanbitou.service.ConsumerInfoService;
-import com.burton.common.base.BaseRequest;
-import com.burton.common.base.Constant;
-import com.burton.common.base.Page;
-import com.burton.common.base.Result;
 import com.burton.common.domain.ConsumerInfo;
 import com.burton.lanbitou.respository.ConsumerInfoRepository;
 import com.burton.common.util.DateAndTimeUtil;
@@ -13,6 +11,9 @@ import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;
 import com.burton.common.vo.consumerInfo.GetConsumerInfosRequest;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.jni.Local;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +22,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +36,8 @@ import java.util.List;
 @Service
 public class ConsumerInfoServiceImpl implements ConsumerInfoService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerInfoServiceImpl.class);
+
     @Autowired
     private ConsumerInfoRepository consumerInfoRepository;
 
@@ -38,16 +46,39 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
         if(baseRequest != null){
             String unionId = baseRequest.getUnionId();
             Integer appId = baseRequest.getAppId();
+            Integer userId = baseRequest.getUserId();
             GetConsumerInfosRequest getConsumerInfosRequest = baseRequest.getParam();
+            LocalDate localDate = getConsumerInfosRequest.getLocalDate();
+            if(localDate == null){
+                localDate = LocalDate.now();
+            }
+            LocalDateTime localDateTime = localDate.atTime(0,0,0);
             if(StringUtils.isNotEmpty(unionId) && appId != null && appId != 0){
-
                 Pageable pageable = PageRequest.of(getConsumerInfosRequest.getPage().getCurrentPage() - 1, getConsumerInfosRequest.getPage().getPageSize());
-                org.springframework.data.domain.PageImpl<ConsumerInfo> consumerInfoPage = consumerInfoRepository.findByDelFlagAndUserIdOrderByConsumerTimeDesc(Constant.DEL_FLAG_NO, 2, pageable);
+                org.springframework.data.domain.PageImpl<ConsumerInfo> consumerInfoPage = consumerInfoRepository.findByDelFlagAndUserIdOrderByConsumerTimeDesc(Constant.DEL_FLAG_NO, userId, pageable);
                 List<ConsumerInfo> consumerInfoList = consumerInfoPage.getContent();
+                // 统计每月消费
+                List<ConsumerInfo> resultList = new ArrayList<>();
+                if(!CollectionUtils.isEmpty(consumerInfoList)){
+                    // 当前月的统计结果，只查询一次
+                    if(getConsumerInfosRequest.getPage().getCurrentPage() == 1){
+                        resultList.add(new ConsumerInfo(staticsResultByMonth(userId, LocalDateTime.now())));
+                    }
+
+                    for(ConsumerInfo consumerInfo : consumerInfoList){
+                        if(localDateTime.getMonthValue() >= consumerInfo.getConsumerTime().getMonthValue() && localDateTime.getMonthValue() != consumerInfo.getConsumerTime().getMonthValue()){
+                            resultList.add(new ConsumerInfo(staticsResultByMonth(userId, consumerInfo.getConsumerTime())));
+                            localDateTime = consumerInfo.getConsumerTime();
+                        }
+
+                        resultList.add(consumerInfo);
+                    }
+                }
+
                 Page page = new Page(getConsumerInfosRequest.getPage().getPageSize(), getConsumerInfosRequest.getPage().getCurrentPage());
                 page.setTotalPage(consumerInfoPage.getTotalPages());
-                page.setList(consumerInfoList);
-
+                page.setList(resultList);
+//                LOGGER.info("consumerInfoList {}", JSON.toJSONString(consumerInfoList));
                 return Result.success(page);
             }else{
                 return Result.fail("必填参数为空!");
@@ -55,6 +86,23 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
         }else{
             return Result.fail("必填参数为空!");
         }
+    }
+
+    private BaseResultStatics staticsResultByMonth(Integer userId, LocalDateTime localDateTime){
+        List<ConsumerInfo> tempList = consumerInfoRepository.staticsResultByMonth(userId, DateAndTimeUtil.getFirstDayOfMonth(localDateTime), DateAndTimeUtil.getLastDayOfMonth(localDateTime));
+        if(!CollectionUtils.isEmpty(tempList)){
+            BaseResultStatics baseResultStatics = new BaseResultStatics();
+            baseResultStatics.setLocalDate(localDateTime.toLocalDate());
+            tempList.stream().forEach( info -> {
+                if(Constant.INCOME == info.getDigest()){
+                    baseResultStatics.setTotalIncome(info.getAmount());
+                }else if(Constant.EXPENDITURE == info.getDigest()){
+                    baseResultStatics.setTotalExpend(info.getAmount());
+                }
+            });
+            return baseResultStatics;
+        }
+        return null;
     }
 
     @Override

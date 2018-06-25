@@ -398,4 +398,7 @@ public class Page<T> implements Serializable {
 		this.list = list;
 	}
 
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 }

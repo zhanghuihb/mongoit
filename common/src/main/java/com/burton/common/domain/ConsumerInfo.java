@@ -1,5 +1,6 @@
 package com.burton.common.domain;
 
+import com.burton.common.base.BaseResultStatics;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -82,4 +83,10 @@ public class ConsumerInfo implements Serializable{
     @Column(name = "del_flag")
     private Integer delFlag;
 
+    @Transient
+    private BaseResultStatics baseResultStatics;
+
+    public ConsumerInfo(BaseResultStatics baseResultStatics) {
+        this.baseResultStatics = baseResultStatics;
+    }
 }
