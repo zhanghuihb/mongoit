@@ -1,14 +1,11 @@
 package com.burton.lanbitou.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.burton.common.vo.consumerInfo.*;
 import com.burton.common.vo.user.GetAccountInfoResponse;
 import com.burton.lanbitou.service.ConsumerInfoService;
 import com.burton.common.base.*;
 import com.burton.common.domain.ConsumerInfo;
-import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
-import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;
-import com.burton.common.vo.consumerInfo.GetConsumerInfoByIdRequest;
-import com.burton.common.vo.consumerInfo.GetConsumerInfosRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,8 +84,6 @@ public class ConsumerInfoController extends BaseController {
         }
     }
 
-
-
     @RequestMapping("/getAccountInfo")
     @ApiOperation(value = "查询账户信息", httpMethod = "POST", response = BaseResponse.class)
     private ResponseEntity<String> getAccountInfo(@RequestBody BaseRequest<?> baseRequest){
@@ -96,6 +91,20 @@ public class ConsumerInfoController extends BaseController {
         baseRequest.validate();
 
         Result<GetAccountInfoResponse> result = consumerInfoService.getAccountInfo(baseRequest.getUserId());
+        if(result.isSuccess()){
+            return responseData(BaseResponse.success(result.getData()));
+        }else{
+            return responseData(BaseResponse.fail(result.getMsg(),result.getShowMsg()));
+        }
+    }
+
+    @RequestMapping("/staticsConsumerInfoByMonth")
+    @ApiOperation(value = "统计每月消费", httpMethod = "POST", response = BaseResponse.class)
+    private ResponseEntity<String> staticsConsumerInfoByMonth(@RequestBody BaseRequest<StaticsByMonthRequest> baseRequest){
+        LOGGER.info("统计每月消费接口请求参数 {}", JSON.toJSONString(baseRequest));
+        baseRequest.validate();
+
+        Result<StaticsByMonthResponse> result = consumerInfoService.staticsConsumerInfoByMonth(baseRequest);
         if(result.isSuccess()){
             return responseData(BaseResponse.success(result.getData()));
         }else{

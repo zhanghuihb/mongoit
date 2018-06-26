@@ -22,4 +22,6 @@ public interface ConsumerInfoRepository extends JpaRepository<ConsumerInfo, Inte
 
     @Query(value = "select c.id, c.user_id,c.city, c.province,c.code,c.code_name,c.parent_code,c.parent_code_name,c.consumer,c.consumer_time,c.description,c.status,c.create_user,c.create_time,c.update_time,c.update_user,c.del_flag, sum(c.amount) as amount, c.digest from console_consumer_info c where c.user_id = ?1 and c.del_flag = 1 and c.consumer_time between ?2 and ?3 group by c.digest", nativeQuery = true)
     List<ConsumerInfo> staticsResultByMonth(Integer userId, LocalDateTime startTime, LocalDateTime endTime);
+
+    List<ConsumerInfo> findByDelFlagAndUserIdAndDigestAndConsumerTimeBetweenOrderByAmountDesc(Integer delFlag, Integer userId, Integer digest, LocalDateTime startTime, LocalDateTime endTime);
 }

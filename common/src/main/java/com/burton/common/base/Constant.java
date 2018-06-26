@@ -29,4 +29,6 @@ public class Constant {
     public static String LTS_TRIGGER_TIME = "triggerTime";
 
     public static String LTS_CRON_EXPRESSION = "cronExpression";
+
+    public static Integer STATICS_MONTH_NUM = 6;
 }

@@ -2,14 +2,12 @@ package com.burton.lanbitou.service.Impl;
 
 import com.alibaba.fastjson.JSON;
 import com.burton.common.base.*;
+import com.burton.common.vo.consumerInfo.*;
 import com.burton.common.vo.user.GetAccountInfoResponse;
 import com.burton.lanbitou.service.ConsumerInfoService;
 import com.burton.common.domain.ConsumerInfo;
 import com.burton.lanbitou.respository.ConsumerInfoRepository;
 import com.burton.common.util.DateAndTimeUtil;
-import com.burton.common.vo.consumerInfo.AddConsumerInfoRequest;
-import com.burton.common.vo.consumerInfo.EditConsumerInfoRequest;
-import com.burton.common.vo.consumerInfo.GetConsumerInfosRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.jni.Local;
 import org.slf4j.Logger;
@@ -27,7 +25,9 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Tainy
@@ -188,4 +188,76 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
             return Result.fail("用户ID不可为空");
         }
     }
+
+    @Override
+    public Result<StaticsByMonthResponse> staticsConsumerInfoByMonth(BaseRequest<StaticsByMonthRequest> baseRequest) {
+        Integer userId = baseRequest.getUserId();
+        StaticsByMonthRequest param = baseRequest.getParam();
+        if(userId != null && userId != 0){
+            LocalDate localDate = param.getLocalDate();
+            Integer digest = param.getDigest();
+            if(localDate != null && digest != null && digest != 0){
+                LocalDateTime endTime = DateAndTimeUtil.getLastDayOfMonth(localDate.atTime(0,0,0));
+                StaticsByMonthResponse response = minusFewMonths(endTime, Constant.STATICS_MONTH_NUM);
+                LocalDateTime startTime = DateAndTimeUtil.minusFewMonths(endTime, Constant.STATICS_MONTH_NUM);
+                List<ConsumerInfo> tempList = consumerInfoRepository.findByDelFlagAndUserIdAndDigestAndConsumerTimeBetweenOrderByAmountDesc(Constant.DEL_FLAG_NO, userId, digest, startTime, endTime);
+                if(!CollectionUtils.isEmpty(tempList)){
+                    Map<String, Integer> map = response.getMap();
+                    List<ConsumerInfo> records = new ArrayList<>();
+                    String queryDate = localDate.toString().substring(0,7);
+                    tempList.stream().forEach(consumerInfo -> {
+                        String key = consumerInfo.getConsumerTime().toString().substring(0,7);
+                        map.put(key,map.get(key) + consumerInfo.getAmount());
+                        if(queryDate.equals(key)){
+                            records.add(consumerInfo);
+                        }
+                    });
+
+                    response.setRecords(records);
+                    List<String> monthList = response.getMonthList();
+                    List<Integer> amountList = new ArrayList<>();
+                    if(!CollectionUtils.isEmpty(monthList)){
+                        for(String month : monthList){
+                            amountList.add(map.get(month));
+                        }
+                        // 查询月的总额
+                        response.setTotalAmount(map.get(monthList.get(monthList.size() - 1)));
+                        // 查询月的消费数
+                        response.setCount(records.size());
+                        response.setAmountList(amountList);
+                        return Result.success(response);
+                    }
+                }
+
+                return Result.success(null);
+            }else{
+                return Result.fail("必填参数为空");
+            }
+        }else{
+            return Result.fail("用户ID不可为空");
+        }
+    }
+
+    private StaticsByMonthResponse minusFewMonths(LocalDateTime localDateTime, Integer num){
+        StaticsByMonthResponse response = new StaticsByMonthResponse();
+        List<String> monthList = new ArrayList<>();
+        Map<String, Integer> map = new HashMap<>();
+        LocalDateTime temp = null;
+        for(int i = 0; i < num; i++){
+            temp = DateAndTimeUtil.minusFewMonths(localDateTime, num - i - 1);
+            String month = null;
+            if(temp.getMonthValue() < 10){
+                month = temp.getYear() + "-0" + temp.getMonthValue();
+            }else{
+                month = temp.getYear() + "-" + temp.getMonthValue();
+            }
+            monthList.add(month);
+            map.put(month, 0);
+        }
+        response.setMonthList(monthList);
+        response.setMap(map);
+
+        return response;
+    }
+
 }
