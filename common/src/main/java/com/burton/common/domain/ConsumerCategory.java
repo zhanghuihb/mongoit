@@ -17,7 +17,7 @@ import java.util.List;
 public class ConsumerCategory implements Serializable{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

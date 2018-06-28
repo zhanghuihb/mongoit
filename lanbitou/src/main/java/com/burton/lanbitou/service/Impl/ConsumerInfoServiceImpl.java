@@ -20,10 +20,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Tainy
@@ -62,6 +59,7 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
                     }
 
                     for(ConsumerInfo consumerInfo : consumerInfoList){
+
                         if(localDateTime.getMonthValue() >= consumerInfo.getConsumerTime().getMonthValue() && localDateTime.getMonthValue() != consumerInfo.getConsumerTime().getMonthValue()){
                             resultList.add(new ConsumerInfo(staticsResultByMonth(userId, consumerInfo.getConsumerTime())));
                             localDateTime = consumerInfo.getConsumerTime();
@@ -86,9 +84,9 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
 
     private BaseResultStatics staticsResultByMonth(Integer userId, LocalDateTime localDateTime){
         List<ConsumerInfo> tempList = consumerInfoRepository.staticsResultByMonth(userId, DateAndTimeUtil.getFirstDayOfMonth(localDateTime), DateAndTimeUtil.getLastDayOfMonth(localDateTime));
+        BaseResultStatics baseResultStatics = new BaseResultStatics();
+        baseResultStatics.setLocalDate(localDateTime.toLocalDate());
         if(!CollectionUtils.isEmpty(tempList)){
-            BaseResultStatics baseResultStatics = new BaseResultStatics();
-            baseResultStatics.setLocalDate(localDateTime.toLocalDate());
             tempList.stream().forEach( info -> {
                 if(Constant.INCOME == info.getDigest()){
                     baseResultStatics.setTotalIncome(info.getAmount());
@@ -96,9 +94,8 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
                     baseResultStatics.setTotalExpend(info.getAmount());
                 }
             });
-            return baseResultStatics;
         }
-        return null;
+        return baseResultStatics;
     }
 
     @Override
@@ -203,7 +200,7 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
                     String queryDate = localDate.toString().substring(0,7);
                     tempList.stream().forEach(consumerInfo -> {
                         String key = consumerInfo.getConsumerTime().toString().substring(0,7);
-                        map.put(key,map.get(key) + consumerInfo.getAmount());
+                        map.put(key,map.get(key) == null ? consumerInfo.getAmount() : ( map.get(key) + consumerInfo.getAmount()));
                         if(queryDate.equals(key)){
                             records.add(consumerInfo);
                         }
@@ -223,9 +220,17 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
                         response.setAmountList(amountList);
                         return Result.success(response);
                     }
+                }else{
+                    // 查询月的总额
+                    response.setTotalAmount(0);
+                    // 查询月的消费数
+                    response.setCount(0);
+                    response.setAmountList(Arrays.asList(0,0,0,0,0,0));
+                    response.setRecords(new ArrayList<>());
+                    return Result.success(response);
                 }
 
-                return Result.success(null);
+                return Result.success(response);
             }else{
                 return Result.fail("必填参数为空");
             }
