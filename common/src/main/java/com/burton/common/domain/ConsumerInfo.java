@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 public class ConsumerInfo implements Serializable{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
