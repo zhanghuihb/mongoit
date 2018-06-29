@@ -20,5 +20,25 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<finalName>lanbitou</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.0.2.RELEASE</version>
+				<configuration>
+					<mainClass>com.burton.lanbitou.LanbitouApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

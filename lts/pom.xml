@@ -18,7 +18,7 @@
 		<java.version>1.8</java.version>
 		<lts.version>1.7.1</lts.version>
 		<zkclient.version>0.1</zkclient.version>
-		<netty.version>4.0.20.Final</netty.version>
+		<netty.version>4.0.50.Final</netty.version>
 		<mapdb.version>2.0-beta10</mapdb.version>
 		<fastjson.version>1.2.7</fastjson.version>
 		<javassist.version>3.20.0-GA</javassist.version>
@@ -83,13 +83,24 @@
 	</dependencies>
 
 	<build>
+		<finalName>lts</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.0.2.RELEASE</version>
+				<configuration>
+					<mainClass>com.burton.lts.LtsApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

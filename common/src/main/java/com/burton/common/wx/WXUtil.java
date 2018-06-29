@@ -82,20 +82,4 @@ public class WXUtil {
 
         return null;
     }
-
-    public static void main(String[] args) throws InvalidAlgorithmParameterException {
-        /*
-        String encryptedData = "/vCyATQKNz5aIyD+qzhTLW6BCfTbgypXZB066evjuC/rlNj/MtG38D5HB5wchebEEACGAJBRg22CY4U7W742lMSSCrNs6FWaXx0Phkw889fW/baxTF80fQRzdyusI7Cw1a+8jKzN2gMNoZSpYfpZCqVogpSIO68TbtOsAejYjOIA4O/3YowZeSIg6kzxTMu1qfSX7AHbBjOW34xNqK+D1ogsgajk7GBqwdl0guFpCVId9xXo0Gyi7PKNOcKYQMqFzEJZz5j2BeUb2gWEZLnCfkq+orMrcQJc/Ndlc/cRBpG/7r1RIHDt27rp8mKMgu76aUL9WAATGKnFSGhSBP9BPXvmxDj3EbC6ecoREibe9ABheCkHPhKuAAbQAO9tcqVW7C6jvfzImVMuPCaCgAZnQwmhDkRLP6vdBqYcskadVMeIMdLavbg+hzldO4YCvmgwAZgcGJsL2GV6n8yF0tIpG4rcG4bjSJBknR96GHRA+HEQiQ3ULCM9KQPHfDgL3is6phuNO0Z16xbWjp8qu5L/YETwofW5xQM4cXBoNe1qZlIlLwsrfhz+HAijE2Axn+px";
-        String sessionKey = "OZNKCALYAZhzPj5XsKANlw==";
-        String iv = "iQQ2VZRrkb8RyWDUkZKQLg==";*/
-
-
-        String encryptedData = "/vCyATQKNz5aIyD+qzhTLW6BCfTbgypXZB066evjuC/rlNj/MtG38D5HB5wchebEEACGAJBRg22CY4U7W742lMSSCrNs6FWaXx0Phkw889fW/baxTF80fQRzdyusI7Cw1a+8jKzN2gMNoZSpYfpZCqVogpSIO68TbtOsAejYjOIA4O/3YowZeSIg6kzxTMu1qfSX7AHbBjOW34xNqK+D1ogsgajk7GBqwdl0guFpCVId9xXo0Gyi7PKNOcKYQMqFzEJZz5j2BeUb2gWEZLnCfkq+orMrcQJc/Ndlc/cRBpG/7r1RIHDt27rp8mKMgu76aUL9WAATGKnFSGhSBP9BPXvmxDj3EbC6ecoREibe9ABheCkHPhKuAAbQAO9tcqVW7C6jvfzImVMuPCaCgAZnQwmhDkRLP6vdBqYcskadVMeIMdLavbg+hzldO4YCvmgwAZgcGJsL2GV6n8yF0tIpG4rcG4bjSJBknR96GHRA+HEQiQ3ULCM9KQPHfDgL3is6phuNO0Z16xbWjp8qu5L/YETwofW5xQM4cXBoNe1qZlIlLwsrfhz+HAijE2Axn+px";
-        String sessionKey = "J75SlNuAyRVO+ZIRDUmgWQ==";
-        String iv = "iQQ2VZRrkb8RyWDUkZKQLg==";
-
-        AES aes = new AES();
-        byte[] resultByte = aes.decrypt(Base64.decodeFast(encryptedData), Base64.decodeFast(sessionKey), Base64.decodeFast(iv));
-        System.out.println(resultByte);
-    }
 }

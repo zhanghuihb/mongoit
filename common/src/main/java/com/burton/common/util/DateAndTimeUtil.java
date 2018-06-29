@@ -1,10 +1,8 @@
 package com.burton.common.util;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.TemporalField;
 
 /**
  * @author Tainy
@@ -59,12 +57,5 @@ public class DateAndTimeUtil {
      */
     public static LocalDateTime increaseFewMonths(LocalDateTime localDateTime, Integer num) {
         return localDateTime.minusMonths(-num).with(TemporalAdjusters.firstDayOfMonth()).withHour(23).withMinute(59).withSecond(59);
-    }
-
-    public static void main(String[] args) {
-        //System.out.println(stringToLocalDateTime("1986-04-08 12:30:22"));
-        System.out.println(getFirstDayOfMonth(LocalDateTime.now()));
-        System.out.println(getLastDayOfMonth(LocalDateTime.now()));
-        System.out.println(increaseFewMonths(LocalDateTime.now(), 6));
     }
 }

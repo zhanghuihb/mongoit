@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/lts/lts.iml" filepath="$PROJECT_DIR$/lts/lts.iml" />
       <module fileurl="file://$PROJECT_DIR$/parentpom/parentpom.iml" filepath="$PROJECT_DIR$/parentpom/parentpom.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
-      <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
     </modules>
   </component>
 </project>
