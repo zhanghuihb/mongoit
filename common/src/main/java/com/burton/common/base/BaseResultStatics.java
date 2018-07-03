@@ -16,8 +16,8 @@ public class BaseResultStatics implements Serializable{
 
     private LocalDate localDate;
 
-    private Integer totalIncome;
+    private Integer totalIncome = 0;
 
-    private Integer totalExpend;
+    private Integer totalExpend = 0;
 
 }

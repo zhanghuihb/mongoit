@@ -16,20 +16,20 @@ import java.time.LocalDateTime;
 public class App implements Serializable{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, columnDefinition = "INT(11) NOT NULL AUTO_INCREMENT COMMENT '主键'")
     private Integer id;
 
     @Column(name = "app_id", unique = true, columnDefinition = "INT(11) NOT NULL COMMENT '我们自己定义的小程序应用ID'")
     private Integer appId;
 
-    @Column(name = "app_name", columnDefinition = "VARCHAR(64) NOT NULL COMMENT '小程序应用名称'")
+    @Column(name = "app_name", columnDefinition = "VARCHAR(64) CHARACTER SET utf8mb4 NOT NULL COMMENT '小程序应用名称'")
     private String appName;
 
-    @Column(name = "app_code", columnDefinition = "VARCHAR(64) NOT NULL COMMENT '微信小程序应用ID'")
+    @Column(name = "app_code", columnDefinition = "VARCHAR(64) CHARACTER SET utf8mb4 NOT NULL COMMENT '微信小程序应用ID'")
     private String appCode;
 
-    @Column(name = "app_secret", columnDefinition = "VARCHAR(64) NOT NULL COMMENT '微信小程序应用密钥'")
+    @Column(name = "app_secret", columnDefinition = "VARCHAR(64) CHARACTER SET utf8mb4 NOT NULL COMMENT '微信小程序应用密钥'")
     private String appSecret;
 
     @Column(name = "switched", columnDefinition = "INT(4) NOT NULL DEFAULT 1 COMMENT '定时刷寻开关(1：需要刷新 0：不需要刷新)'")
@@ -41,13 +41,13 @@ public class App implements Serializable{
     @Column(name = "valid_time", columnDefinition = "INT(11) NOT NULL DEFAULT 7200 COMMENT '有效时间，单位：秒，默认2个小时'")
     private Integer validTime;
 
-    @Column(name = "create_user", columnDefinition = "varchar(32) NOT NULL DEFAULT '0' COMMENT '创建者'")
+    @Column(name = "create_user", columnDefinition = "varchar(32) CHARACTER SET utf8mb4 NOT NULL DEFAULT '0' COMMENT '创建者'")
     private String createUser;
 
     @Column(name = "create_time", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
     private LocalDateTime createTime;
 
-    @Column(name = "update_user", columnDefinition = "varchar(32) NOT NULL DEFAULT '0' COMMENT '更新者'")
+    @Column(name = "update_user", columnDefinition = "varchar(32) CHARACTER SET utf8mb4 NOT NULL DEFAULT '0' COMMENT '更新者'")
     private String updateUser;
 
     @Column(name = "update_time", columnDefinition = "datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'")
