@@ -86,15 +86,15 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
     private BaseResultStatics staticsResultByMonth(Integer userId, LocalDateTime localDateTime){
         System.out.println(DateAndTimeUtil.getFirstDayOfMonth(localDateTime));
         System.out.println(DateAndTimeUtil.getLastDayOfMonth(localDateTime));
-        List<ConsumerInfo> tempList = consumerInfoRepository.staticsResultByMonth(userId, DateAndTimeUtil.getFirstDayOfMonth(localDateTime), DateAndTimeUtil.getLastDayOfMonth(localDateTime));
+        List<BaseResultStatics> tempList = consumerInfoRepository.staticsResultByMonth(userId, DateAndTimeUtil.getFirstDayOfMonth(localDateTime), DateAndTimeUtil.getLastDayOfMonth(localDateTime));
         LOGGER.info("{} 月份 结果 {}", localDateTime, tempList);
         BaseResultStatics baseResultStatics = new BaseResultStatics();
         baseResultStatics.setLocalDate(localDateTime.toLocalDate());
         if(!CollectionUtils.isEmpty(tempList)){
             tempList.stream().forEach( info -> {
-                if(Constant.INCOME == info.getDigest()){
+                if(Constant.INCOME == info.getType()){
                     baseResultStatics.setTotalIncome(info.getAmount());
-                }else if(Constant.EXPENDITURE == info.getDigest()){
+                }else if(Constant.EXPENDITURE == info.getType()){
                     baseResultStatics.setTotalExpend(info.getAmount());
                 }
             });
@@ -170,12 +170,12 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
         if(userId != null && userId != 0){
             GetAccountInfoResponse response = new GetAccountInfoResponse();
 
-            List<ConsumerInfo> tempList = consumerInfoRepository.getAccountInfo(userId);
+            List<BaseResultStatics> tempList = consumerInfoRepository.getAccountInfo(userId);
             if(!CollectionUtils.isEmpty(tempList)){
                 tempList.stream().forEach( info -> {
-                    if(Constant.INCOME == info.getDigest()){
+                    if(Constant.INCOME == info.getType()){
                         response.setTotalIncome(info.getAmount());
-                    }else if(Constant.EXPENDITURE == info.getDigest()){
+                    }else if(Constant.EXPENDITURE == info.getType()){
                         response.setTotalExpend(info.getAmount());
                     }
                 });

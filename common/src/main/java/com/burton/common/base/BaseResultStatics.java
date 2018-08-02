@@ -18,15 +18,15 @@ public class BaseResultStatics implements Serializable{
 
     private LocalDate localDate;
 
-    private Integer totalIncome = 0;
+    private long totalIncome = 0;
 
-    private Integer totalExpend = 0;
+    private long totalExpend = 0;
 
-    private Integer type;
+    private int type;
 
-    private Integer amount;
+    private long amount;
 
-    public BaseResultStatics(Integer type, Integer amount) {
+    public BaseResultStatics(int type, long amount) {
         this.type = type;
         this.amount = amount;
     }

@@ -11,9 +11,9 @@ import java.io.Serializable;
 @Data
 public class GetAccountInfoResponse implements Serializable{
 
-    private Integer totalIncome = 0;
+    private long totalIncome = 0;
 
-    private Integer totalExpend = 0;
+    private long totalExpend = 0;
 
-    private Integer balance = 0;
+    private long balance = 0;
 }
