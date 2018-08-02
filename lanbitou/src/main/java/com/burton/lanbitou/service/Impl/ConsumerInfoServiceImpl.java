@@ -8,6 +8,7 @@ import com.burton.common.vo.user.GetAccountInfoResponse;
 import com.burton.lanbitou.respository.ConsumerInfoRepository;
 import com.burton.lanbitou.service.ConsumerInfoService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.jni.Local;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -83,7 +84,10 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
     }
 
     private BaseResultStatics staticsResultByMonth(Integer userId, LocalDateTime localDateTime){
+        System.out.println(DateAndTimeUtil.getFirstDayOfMonth(localDateTime));
+        System.out.println(DateAndTimeUtil.getLastDayOfMonth(localDateTime));
         List<ConsumerInfo> tempList = consumerInfoRepository.staticsResultByMonth(userId, DateAndTimeUtil.getFirstDayOfMonth(localDateTime), DateAndTimeUtil.getLastDayOfMonth(localDateTime));
+        LOGGER.info("{} 月份 结果 {}", localDateTime, tempList);
         BaseResultStatics baseResultStatics = new BaseResultStatics();
         baseResultStatics.setLocalDate(localDateTime.toLocalDate());
         if(!CollectionUtils.isEmpty(tempList)){
@@ -95,6 +99,7 @@ public class ConsumerInfoServiceImpl implements ConsumerInfoService {
                 }
             });
         }
+        LOGGER.info("{} 月份 封装结果 {}", localDateTime, baseResultStatics);
         return baseResultStatics;
     }
 

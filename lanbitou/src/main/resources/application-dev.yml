@@ -37,7 +37,7 @@ spring:
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
     # ���ü��ͳ�����ص�filters��ȥ�����ؽ���sql�޷�ͳ�ƣ�'wall'���ڷ���ǽ
-    filters: stat,wall,slf4j
+    filters: stat,wall,slf4j,log4j
     # ͨ��connectProperties��������mergeSql���ܣ���SQL��¼
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     # �ϲ����DruidDataSource�ļ������ http://localhost:8080/druid/index.html admin/admin

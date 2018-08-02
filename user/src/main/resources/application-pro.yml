@@ -60,11 +60,11 @@ spring:
       # Redis���ݿ�������Ĭ��Ϊ0��
       database: 0
       # Redis��������ַ
-      host: 118.25.59.203
+      host: 127.0.0.1
       # Redis���������Ӷ˿�
       port: 6379
       # Redis�������������루Ĭ��Ϊ�գ�
-      password: zhanghuihbdb@123
+      password:
       # ���ӳ������������ʹ�ø�ֵ��ʾû�����ƣ�
       jedis:
         pool:

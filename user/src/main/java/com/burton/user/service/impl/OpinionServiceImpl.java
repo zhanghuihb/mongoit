@@ -9,6 +9,7 @@ import com.burton.user.repository.OpinionRepository;
 import com.burton.user.service.OpinionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -22,7 +23,7 @@ public class OpinionServiceImpl implements OpinionService{
     private OpinionRepository opinionRepository;
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public Result<?> saveOpinion(BaseRequest<SaveOpinionRequest> baseRequest) throws Exception {
         Integer userId = baseRequest.getUserId();
         Integer appId = baseRequest.getAppId();
@@ -35,7 +36,7 @@ public class OpinionServiceImpl implements OpinionService{
                 opinion.setContent(request.getContent());
                 opinion.setReading(Constant.READING_NO);
 
-                if(opinionRepository.save(opinion).getId() == 1){
+                if(opinionRepository.save(opinion).getId() > 0){
                     return Result.success();
                 }else{
                     throw new Exception("保存意见及建议失败!");

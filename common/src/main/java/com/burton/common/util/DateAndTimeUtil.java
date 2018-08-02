@@ -1,5 +1,6 @@
 package com.burton.common.util;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
@@ -57,5 +58,31 @@ public class DateAndTimeUtil {
      */
     public static LocalDateTime increaseFewMonths(LocalDateTime localDateTime, Integer num) {
         return localDateTime.minusMonths(-num).with(TemporalAdjusters.firstDayOfMonth()).withHour(23).withMinute(59).withSecond(59);
+    }
+
+    /**
+     * 向前推num天
+     *
+     * @author Tainy
+     * @date   2018/7/11 16:37
+     * @param localDate
+     * @param num
+     * @return
+     */
+    public static LocalDate minusFewDays(LocalDate localDate, Integer num){
+        return localDate.minusDays(num);
+    }
+
+    /**
+     * 向后推num天
+     *
+     * @author Tainy
+     * @date   2018/7/11 16:37
+     * @param localDate
+     * @param num
+     * @return
+     */
+    public static LocalDate increaseFewDays(LocalDate localDate, Integer num){
+        return localDate.minusDays(-num);
     }
 }
