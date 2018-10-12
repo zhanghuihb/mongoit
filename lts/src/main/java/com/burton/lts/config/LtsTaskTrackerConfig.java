@@ -21,7 +21,7 @@ public class LtsTaskTrackerConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(LtsTaskTrackerConfig.class);
 
     @Bean
-    public TaskTrackerAnnotationFactoryBean getTaskTrackerAnnotationFactoryBean(){
+    public TaskTrackerAnnotationFactoryBean getTaskTrackerAnnotationFactoryBean() {
         TaskTrackerAnnotationFactoryBean taskTrackerAnnotationFactoryBean = new TaskTrackerAnnotationFactoryBean();
         taskTrackerAnnotationFactoryBean.setJobRunnerClass(TaskTrackerJobRunner.class);
         taskTrackerAnnotationFactoryBean.setClusterName("burton_lts_cluster");
