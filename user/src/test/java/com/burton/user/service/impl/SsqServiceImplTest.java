@@ -20,7 +20,7 @@ public class SsqServiceImplTest {
 
     @Test
     public void caculate() throws Exception {
-        ssqService.caculate("18117", 1, 5);
+        ssqService.caculate("18123", 1, 10);
     }
 
 }
