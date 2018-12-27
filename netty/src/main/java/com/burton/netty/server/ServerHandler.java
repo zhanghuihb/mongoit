@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.burton.common.domain.XcxUser;
 import com.burton.netty.codc.Request;
 import com.burton.netty.serial.Message;
+import com.burton.netty.serial.Serializer;
 import com.burton.netty.session.Session;
 import com.burton.netty.session.SessionImpl;
 import com.burton.netty.session.SessionManager;
@@ -43,6 +44,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Request request) throws Exception {
         System.out.println("receive client msg : " + JSON.toJSONString(request));
+        System.out.println(new Message().read);
 
         // 返回客户端消息
 //        channelHandlerContext.writeAndFlush("I have received your msg : " + request.toString());

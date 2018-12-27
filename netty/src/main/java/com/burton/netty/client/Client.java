@@ -39,7 +39,7 @@ public class Client {
         });
 
         // 连接服务器
-        ChannelFuture connect = bootstrap.connect(new InetSocketAddress("127.0.0.1", 10102));
+        ChannelFuture connect = bootstrap.connect(new InetSocketAddress("127.0.0.1", 8707));
         Channel channel = connect.sync().channel();
 
         System.out.println("client has already started!");
