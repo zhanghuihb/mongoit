@@ -19,6 +19,7 @@
         <module name="common" />
         <module name="lanbitou" />
         <module name="lts" />
+        <module name="netty" />
         <module name="user" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
       <module name="common" target="1.8" />
       <module name="lanbitou" target="1.8" />
       <module name="lts" target="1.8" />
+      <module name="netty" target="1.8" />
       <module name="parentpom" target="1.8" />
       <module name="user" target="1.8" />
     </bytecodeTargetLevel>

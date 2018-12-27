@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/lanbitou/lanbitou.iml" filepath="$PROJECT_DIR$/lanbitou/lanbitou.iml" />
       <module fileurl="file://$PROJECT_DIR$/lts/lts.iml" filepath="$PROJECT_DIR$/lts/lts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty/netty.iml" filepath="$PROJECT_DIR$/netty/netty.iml" />
       <module fileurl="file://$PROJECT_DIR$/parentpom/parentpom.iml" filepath="$PROJECT_DIR$/parentpom/parentpom.iml" />
       <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
     </modules>
