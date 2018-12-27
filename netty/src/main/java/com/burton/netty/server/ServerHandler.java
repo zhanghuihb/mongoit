@@ -44,7 +44,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Request request) throws Exception {
         System.out.println("receive client msg : " + JSON.toJSONString(request));
-        System.out.println(new Message().read);
+        System.out.println(new Message().readFromBytes(request.getData()));
 
         // 返回客户端消息
 //        channelHandlerContext.writeAndFlush("I have received your msg : " + request.toString());
