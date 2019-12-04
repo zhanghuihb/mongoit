@@ -9,17 +9,17 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @author Tainy
  * @date 2018/12/27 14:17
  */
-public class ClientHandler extends SimpleChannelInboundHandler<Response>{
+public class ClientHandler extends SimpleChannelInboundHandler<String>{
 
     /**
      * 接收消息
      * @param ctx
-     * @param response
+     * @param msg
      * @throws Exception
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Response response) throws Exception {
-        System.out.println(String .format("Client[id=%s] receive msg %s: ",ctx.channel().id(), JSON.toJSONString(response)));
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        System.out.println(String .format("Client[id=%s] receive msg %s: ",ctx.channel().id(), msg));
     }
 
     /**

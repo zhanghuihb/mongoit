@@ -1,6 +1,5 @@
 package com.burton.netty.session;
 
-import com.burton.common.domain.XcxUser;
 import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
 

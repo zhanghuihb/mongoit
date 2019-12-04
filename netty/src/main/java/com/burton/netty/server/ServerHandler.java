@@ -1,39 +1,37 @@
 package com.burton.netty.server;
 
 import com.alibaba.fastjson.JSON;
-import com.burton.common.domain.XcxUser;
-import com.burton.netty.codc.Request;
-import com.burton.netty.serial.Message;
-import com.burton.netty.serial.Serializer;
 import com.burton.netty.session.Session;
 import com.burton.netty.session.SessionImpl;
 import com.burton.netty.session.SessionManager;
+import com.burton.netty.session.User;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Tainy
  * @date 2018/12/20 16:04
  */
-public class ServerHandler extends SimpleChannelInboundHandler<Request> {
+@Slf4j
+@Component
+@ChannelHandler.Sharable
+public class ServerHandler extends SimpleChannelInboundHandler<Object> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ServerHandler.class);
-    private static ServerHandler serverHandler;
+    public static final String DELIMITER = "_#_";
 
-    @PostConstruct
-    public void init(){
-        serverHandler = this;
-    }
+    private AtomicInteger connectNum = new AtomicInteger(0);
 
     /**
      * 接收消息
@@ -42,13 +40,24 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
      * @date   2018/12/20 17:20
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Request request) throws Exception {
-        System.out.println("receive client msg : " + JSON.toJSONString(request));
-        System.out.println(new Message().readFromBytes(request.getData()));
+    protected void channelRead0(ChannelHandlerContext ctx, Object object) throws Exception {
+        int sign = 1;
+        String msg = "";
+        if (object instanceof String) {
+            msg = (String) object;
+        } else if (object instanceof TextWebSocketFrame) {
+            sign = 2;
+            msg = ((TextWebSocketFrame) object).text();
+        } else {
+            System.out.println("收到未知类型的消息："+msg);
+            return;
+        }
+
+        System.out.println("receive client msg : " + msg);
 
         // 返回客户端消息
-//        channelHandlerContext.writeAndFlush("I have received your msg : " + request.toString());
-        handlerMessage(new SessionImpl(ctx.channel()), request);
+        ctx.writeAndFlush("I have received your msg : " + msg);
+        handlerMessage(new SessionImpl(ctx.channel()), msg);
     }
 
     /**
@@ -60,6 +69,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("客户端连接到服务端成功" + ctx.channel());
         super.channelActive(ctx);
+
+        int connections = connectNum.incrementAndGet();
+        log.info("connections = {}", connections);
     }
 
     /**
@@ -72,11 +84,16 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
         Session session = new SessionImpl(ctx.channel());
         Object object = session.getAttachment();
         if (object != null) {
-            XcxUser user = (XcxUser) object;
-            LOGGER.info("channel 绑定用户信息 {}", JSON.toJSONString(user));
+            User user = (User) object;
+            log.info("channel 绑定用户信息 {}", JSON.toJSONString(user));
             SessionManager.removeSession(user.getId());
         }
-        System.out.println(String.format("客户端 id=%s 断线成功",ctx.channel().id()));
+
+        log.info(String.format("客户端 id=%s 断线成功", ctx.channel().id()));
+        super.channelInactive(ctx);
+        log.info("[channelInactive]channel.isActive() = {}", ctx.channel().isActive());
+
+        connectNum.decrementAndGet();
     }
 
     /**
@@ -86,17 +103,22 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        System.out.println("异常" + ctx.channel());
+        log.error("异常" + ctx.channel());
         super.exceptionCaught(ctx, cause);
+        log.info("[exceptionCaught]channel.isActive() = {}", ctx.channel().isActive());
+        ctx.close();
     }
 
 
     /**
      * 消息处理
      * @param session
-     * @param request
+     * @param msg
      */
-    private void handlerMessage(Session session, Request request){
+    private void handlerMessage(Session session, String msg){
+        // 握手消息
+
+        // 业务消息
 
     }
 
