@@ -1,6 +1,6 @@
 #server
 server:
-  port: 8081
+  port: 8090
   servlet:
     context-path: /user
   tomcat:
@@ -11,37 +11,55 @@ spring:
   application:
     name: user
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: root
-    initialSize: 2
-    maxTotal: 10
-    maxActive: 5
-    maxWaitMillis: 60000
-    maxIdle: 3
-    minIdle: 1
-    removeAbandonedOnMaintenance: true
-    removeAbandonedTimeout: 60
-    # ???��????��??????��??????????????????????��?????
-    timeBetweenEvictionRunsMillis: 60000
-    # ??????????????????��??????????��?????
-    minEvictableIdleTimeMillis: 30000
-    numTestsPerEvictionRun: 2
-    validationQuery: select 1
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    # ??PSCache??????????????????PSCache???��
-    poolPreparedStatements: true
-    maxPoolPreparedStatementPerConnectionSize: 20
-    # ???��??????????filters????????????sql???????'wall'????????
-    filters: stat,wall,slf4j
-    # ???connectProperties????????mergeSql???????SQL???
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    # ??????DruidDataSource???????? http://localhost:8080/druid/index.html admin/admin
-    useGlobalDataSourceStat: true
+    druid:
+      #jdbc配置
+      url: jdbc:mysql://106.14.47.3:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: zhanghuidb@123
+      #连接池配置
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 5
+      max-active: 100
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: select 1 from dual
+      validation-query-timeout: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 100000
+      #监控配置WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: admin
+        login-password: admin
+        allow: 127.0.0.1
+      #配置StatFilter
+      filter:
+        stat:
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 1000
+        #配置WallFilter
+        wall:
+          enabled: true
+          db-type: mysql
+          config:
+            delete-allow: false
+            drop-table-allow: false
+
+
 
   #jpa
   jpa:
@@ -55,23 +73,23 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL5Dialect
-  #redis
-  redis:
-      # Redis???????????????0??
-      database: 0
-      # Redis?????????
-      host: localhost
-      # Redis????????????
-      port: 6379
-      # Redis?????????????????????
-      password:
-      # ????????????????????????????????
-      jedis:
-        pool:
-          max-active: 8
-          # ??????????????????????????????????
-          maxwait: 6000
-          # ??????��???????????
-          maxidle: 5
-          # ??????��???��????????
-          minidle: 1
+#  #redis
+#  redis:
+#      # Redis���ݿ�������Ĭ��Ϊ0��
+#      database: 0
+#      # Redis��������ַ
+#      host: localhost
+#      # Redis���������Ӷ˿�
+#      port: 6379
+#      # Redis�������������루Ĭ��Ϊ�գ�
+#      password:
+#      # ���ӳ������������ʹ�ø�ֵ��ʾû�����ƣ�
+#      jedis:
+#        pool:
+#          max-active: 8
+#          # ���ӳ���������ȴ�ʱ�䣨ʹ�ø�ֵ��ʾû�����ƣ�
+#          maxwait: 6000
+#          # ���ӳ��е�����������
+#          maxidle: 5
+#          # ���ӳ��е���С��������
+#          minidle: 1

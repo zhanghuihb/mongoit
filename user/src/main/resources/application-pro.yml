@@ -1,21 +1,21 @@
 #server
 server:
-  port: 9081
+  port: 9080
   servlet:
-    context-path: /user
+    context-path: /lanbitou
   tomcat:
     uri-encoding: utf-8
 
 #spring
 spring:
   application:
-    name: user
+    name: lanbitou
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://118.25.59.203:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://106.14.47.3:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: zhanghuihbdb@123
+    password: zhanghuidb@123
     initialSize: 2
     maxTotal: 10
     maxActive: 5
@@ -63,7 +63,7 @@ spring:
       host: 127.0.0.1
       # Redis���������Ӷ˿�
       port: 6379
-      # Redis�������������루Ĭ��Ϊ�գ�
+      # Redis�������������루Ĭ��Ϊ�գ�zhanghuihbdb@123
       password:
       # ���ӳ������������ʹ�ø�ֵ��ʾû�����ƣ�
       jedis:
