@@ -1,6 +1,7 @@
 package com.mongoit.mongo.controller.mongo;
 
 import com.mongoit.common.base.BaseController;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/index")
+@Api(tags = "首页API")
 public class IndexController extends BaseController {
 
 

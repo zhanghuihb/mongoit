@@ -22,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/consumerInfo")
-@Api(value = "消费记录API" , description = "详细描述:消费记录接口")
+@Api(tags = "消费记录API")
 public class ConsumerInfoController extends BaseController {
 
     @Autowired
