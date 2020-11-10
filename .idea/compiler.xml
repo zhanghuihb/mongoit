@@ -17,13 +17,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mongo" />
         <module name="common" />
-        <module name="user" />
         <module name="netty" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.8" />
+      <module name="mongo" target="1.8" />
       <module name="netty" target="1.8" />
       <module name="parent" target="1.8" />
       <module name="user" target="1.8" />
@@ -32,6 +33,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
+      <module name="mongo" options="-parameters" />
       <module name="netty" options="-parameters" />
       <module name="user" options="-parameters" />
     </option>
