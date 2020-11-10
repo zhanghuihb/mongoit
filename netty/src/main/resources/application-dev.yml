@@ -26,7 +26,7 @@ spring:
     url: jdbc:mysql://106.14.47.3:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: zhanghuidb@123
+    password: mongoitdb@123
     initialSize: 2
     maxTotal: 10
     maxActive: 5
