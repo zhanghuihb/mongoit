@@ -1,18 +1,18 @@
 #server
 server:
-  port: 9080
+  port: 8090
   servlet:
-    context-path: /lanbitou
+    context-path: /user
   tomcat:
     uri-encoding: utf-8
 
 #spring
 spring:
   application:
-    name: lanbitou
+    name: user
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://106.14.47.3:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://172.29.98.99:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: zhanghuidb@123

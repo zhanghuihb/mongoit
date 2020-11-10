@@ -23,10 +23,10 @@ spring:
     name: netty
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://106.14.47.3:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
+    password: zhanghuidb@123
     initialSize: 2
     maxTotal: 10
     maxActive: 5

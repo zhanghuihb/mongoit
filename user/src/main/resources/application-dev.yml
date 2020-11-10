@@ -58,9 +58,6 @@ spring:
           config:
             delete-allow: false
             drop-table-allow: false
-
-
-
   #jpa
   jpa:
     datasource: mysql
