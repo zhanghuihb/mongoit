@@ -6,6 +6,7 @@ import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.BaseResponse;
 import com.mongoit.common.base.Result;
 import com.mongoit.common.domain.ConsumerCategory;
+import com.mongoit.common.response.index.GoodsResponse;
 import com.mongoit.common.response.index.IndexCarouselResponse;
 import com.mongoit.mongo.service.IndexService;
 import io.swagger.annotations.Api;
@@ -39,6 +40,18 @@ public class IndexController extends BaseController {
         baseRequest.validate();
 
         Result<List<IndexCarouselResponse>> result = indexService.getIndexCarousel();
+        if(result.isSuccess()){
+            return responseData(BaseResponse.success(result.getData()));
+        }
+        return responseData(BaseResponse.success(Collections.emptyList()));
+    }
+
+    @RequestMapping("/getIndexLatestPublish")
+    @ApiOperation(value = "查询首页最新发布", httpMethod = "POST", response = BaseResponse.class)
+    private ResponseEntity<String> getIndexLatestPublish(@RequestBody BaseRequest<?> baseRequest){
+        baseRequest.validate();
+
+        Result<List<GoodsResponse>> result = indexService.getIndexLatestPublish();
         if(result.isSuccess()){
             return responseData(BaseResponse.success(result.getData()));
         }

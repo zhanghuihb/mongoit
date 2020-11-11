@@ -60,34 +60,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de95a76c-9709-4d8e-98d2-b2e21bcf05c8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/response/index/IndexCarouselResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/IndexServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/IndexService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/response/index/GoodsResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/base/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/base/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/consumerInfo/AddConsumerInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/request/consumerInfo/AddConsumerInfoRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/consumerInfo/EditConsumerInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/request/consumerInfo/EditConsumerInfoRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/consumerInfo/GetConsumerInfoByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/request/consumerInfo/GetConsumerInfoByIdRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/consumerInfo/GetConsumerInfosRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/request/consumerInfo/GetConsumerInfosRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/consumerInfo/StaticsByMonthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/request/consumerInfo/StaticsByMonthRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/consumerInfo/StaticsByMonthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/response/consumerInfo/StaticsByMonthResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/user/GetAccountInfoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/response/user/GetAccountInfoResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/user/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/request/user/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/user/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/response/user/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/vo/user/SaveOpinionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mongoit/common/request/user/SaveOpinionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/ConsumerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/ConsumerInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/OpinionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/OpinionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/mongo/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/controller/mongo/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/ConsumerInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/ConsumerInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/ConsumerInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/ConsumerInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/OpinionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/OpinionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/OpinionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/OpinionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netty/netty.iml" beforeDir="false" afterPath="$PROJECT_DIR$/netty/netty.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/IndexServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/Impl/IndexServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/IndexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/src/main/java/com/mongoit/mongo/service/IndexService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +152,7 @@
       <recent name="I:\工作\mongoit\user\src\main\java\com\mongoit\user\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mongoit.common.response.index" />
       <recent name="com.mongoit.common.config" />
       <recent name="com.burton.netty.serial" />
       <recent name="com.burton.netty.codc" />
@@ -325,7 +303,7 @@
       <workItem from="1605061618822" duration="106000" />
       <workItem from="1605061755326" duration="43000" />
       <workItem from="1605061805934" duration="446000" />
-      <workItem from="1605062275288" duration="5216000" />
+      <workItem from="1605062275288" duration="9140000" />
     </task>
     <servers />
   </component>
@@ -394,10 +372,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="25" width="1092" height="1015" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605071241109" />
-    <state x="791" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1605070442833">
+    <state x="791" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1605086532091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="791" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605070442833" />
+    <state x="791" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605086532091" />
     <state x="715" y="383" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605061881478">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -414,54 +392,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="255" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605062049004" />
-    <state width="1722" height="377" key="GridCell.Tab.0.bottom" timestamp="1605071251686">
+    <state width="1722" height="264" key="GridCell.Tab.0.bottom" timestamp="1605087312605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605071251686" />
-    <state width="1722" height="377" key="GridCell.Tab.0.center" timestamp="1605071251686">
+    <state width="1722" height="264" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312605" />
+    <state width="1722" height="264" key="GridCell.Tab.0.center" timestamp="1605087312605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605071251686" />
-    <state width="1722" height="377" key="GridCell.Tab.0.left" timestamp="1605071251686">
+    <state width="1722" height="264" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312605" />
+    <state width="1722" height="264" key="GridCell.Tab.0.left" timestamp="1605087312605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605071251686" />
-    <state width="1722" height="377" key="GridCell.Tab.0.right" timestamp="1605071251686">
+    <state width="1722" height="264" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312605" />
+    <state width="1722" height="264" key="GridCell.Tab.0.right" timestamp="1605087312605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605071251686" />
-    <state width="1722" height="377" key="GridCell.Tab.1.bottom" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312605" />
+    <state width="1722" height="264" key="GridCell.Tab.1.bottom" timestamp="1605087312427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
-    <state width="1722" height="377" key="GridCell.Tab.1.center" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312427" />
+    <state width="1722" height="264" key="GridCell.Tab.1.center" timestamp="1605087312427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
-    <state width="1722" height="377" key="GridCell.Tab.1.left" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312427" />
+    <state width="1722" height="264" key="GridCell.Tab.1.left" timestamp="1605087312427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
-    <state width="1722" height="377" key="GridCell.Tab.1.right" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312427" />
+    <state width="1722" height="264" key="GridCell.Tab.1.right" timestamp="1605087312427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
-    <state width="1722" height="377" key="GridCell.Tab.2.bottom" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312427" />
+    <state width="1722" height="264" key="GridCell.Tab.2.bottom" timestamp="1605087312428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
-    <state width="1722" height="377" key="GridCell.Tab.2.center" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312428" />
+    <state width="1722" height="264" key="GridCell.Tab.2.center" timestamp="1605087312427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
-    <state width="1722" height="377" key="GridCell.Tab.2.left" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312427" />
+    <state width="1722" height="264" key="GridCell.Tab.2.left" timestamp="1605087312427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
-    <state width="1722" height="377" key="GridCell.Tab.2.right" timestamp="1605062256087">
+    <state width="1722" height="264" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312427" />
+    <state width="1722" height="264" key="GridCell.Tab.2.right" timestamp="1605087312427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1722" height="377" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605062256087" />
+    <state width="1722" height="264" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605087312427" />
     <state x="487" y="164" key="SettingsEditor" timestamp="1605062056770">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
