@@ -4,8 +4,12 @@ import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.Page;
 import com.mongoit.common.base.Result;
 import com.mongoit.common.domain.ConsumerInfo;
-import com.mongoit.common.vo.consumerInfo.*;
-import com.mongoit.common.vo.user.GetAccountInfoResponse;
+import com.mongoit.common.request.consumerInfo.AddConsumerInfoRequest;
+import com.mongoit.common.request.consumerInfo.EditConsumerInfoRequest;
+import com.mongoit.common.request.consumerInfo.GetConsumerInfosRequest;
+import com.mongoit.common.request.consumerInfo.StaticsByMonthRequest;
+import com.mongoit.common.response.consumerInfo.StaticsByMonthResponse;
+import com.mongoit.common.response.user.GetAccountInfoResponse;
 
 import java.util.List;
 

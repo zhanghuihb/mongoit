@@ -3,7 +3,7 @@ package com.mongoit.mongo.service;
 
 import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.Result;
-import com.mongoit.common.vo.user.SaveOpinionRequest;
+import com.mongoit.common.request.user.SaveOpinionRequest;
 
 /**
  * @author Tainy

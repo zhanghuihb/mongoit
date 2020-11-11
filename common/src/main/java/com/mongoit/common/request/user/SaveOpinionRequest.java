@@ -1,4 +1,4 @@
-package com.mongoit.common.vo.user;
+package com.mongoit.common.request.user;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -5,7 +5,7 @@ import com.mongoit.common.base.BaseController;
 import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.BaseResponse;
 import com.mongoit.common.base.Result;
-import com.mongoit.common.vo.user.SaveOpinionRequest;
+import com.mongoit.common.request.user.SaveOpinionRequest;
 import com.mongoit.mongo.service.OpinionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

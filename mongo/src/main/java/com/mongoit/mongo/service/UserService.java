@@ -3,8 +3,8 @@ package com.mongoit.mongo.service;
 import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.Result;
 import com.mongoit.common.domain.XcxUser;
-import com.mongoit.common.vo.user.LoginRequest;
-import com.mongoit.common.vo.user.LoginResponse;
+import com.mongoit.common.request.user.LoginRequest;
+import com.mongoit.common.response.user.LoginResponse;
 
 /**
  * @author Tainy

@@ -1,4 +1,4 @@
-package com.mongoit.common.vo.user;
+package com.mongoit.common.response.user;
 
 import lombok.Data;
 

@@ -4,7 +4,7 @@ import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.Constant;
 import com.mongoit.common.base.Result;
 import com.mongoit.common.domain.Opinion;
-import com.mongoit.common.vo.user.SaveOpinionRequest;
+import com.mongoit.common.request.user.SaveOpinionRequest;
 import com.mongoit.mongo.respository.OpinionRepository;
 import com.mongoit.mongo.service.OpinionService;
 import org.springframework.beans.factory.annotation.Autowired;

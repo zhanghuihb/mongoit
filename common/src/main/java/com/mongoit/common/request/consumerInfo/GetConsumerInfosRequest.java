@@ -1,4 +1,4 @@
-package com.mongoit.common.vo.consumerInfo;
+package com.mongoit.common.request.consumerInfo;
 
 import com.mongoit.common.base.PageRequest;
 import io.swagger.annotations.ApiModelProperty;

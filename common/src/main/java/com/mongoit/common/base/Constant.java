@@ -6,6 +6,8 @@ package com.mongoit.common.base;
  */
 public class Constant {
 
+    public static final byte NO = 0;
+    public static final byte YES = 1;
     public static final int DEL_FLAG_NO = 1;
     public static final int DEL_FLAG_YES = 2;
 

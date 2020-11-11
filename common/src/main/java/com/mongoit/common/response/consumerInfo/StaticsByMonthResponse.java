@@ -1,4 +1,4 @@
-package com.mongoit.common.vo.consumerInfo;
+package com.mongoit.common.response.consumerInfo;
 
 import com.mongoit.common.domain.ConsumerInfo;
 import lombok.Data;

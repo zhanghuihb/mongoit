@@ -1,4 +1,4 @@
-package com.mongoit.common.vo.consumerInfo;
+package com.mongoit.common.request.consumerInfo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
