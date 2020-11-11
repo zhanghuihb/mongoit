@@ -1,11 +1,11 @@
 package com.mongoit.mongo.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.mongoit.mongo.service.ConsumerCategoryService;
 import com.mongoit.common.base.BaseController;
 import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.BaseResponse;
 import com.mongoit.common.domain.ConsumerCategory;
+import com.mongoit.mongo.service.ConsumerCategoryService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
