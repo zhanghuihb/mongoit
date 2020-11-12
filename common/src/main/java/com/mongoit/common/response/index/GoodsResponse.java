@@ -27,4 +27,7 @@ public class GoodsResponse {
 
     @ApiModelProperty("想买人数")
     private Integer wantToBuyCount;
+
+    @ApiModelProperty("发布时间")
+    public String publishTime;
 }
