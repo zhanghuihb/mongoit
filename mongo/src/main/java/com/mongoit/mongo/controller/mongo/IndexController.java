@@ -6,6 +6,7 @@ import com.mongoit.common.base.BaseRequest;
 import com.mongoit.common.base.BaseResponse;
 import com.mongoit.common.base.Result;
 import com.mongoit.common.domain.ConsumerCategory;
+import com.mongoit.common.request.index.SearchGoodsRequest;
 import com.mongoit.common.response.index.GoodsResponse;
 import com.mongoit.common.response.index.IndexCarouselResponse;
 import com.mongoit.common.response.index.IndexHotNewsResponse;
@@ -65,6 +66,18 @@ public class IndexController extends BaseController {
         baseRequest.validate();
 
         Result<List<IndexHotNewsResponse>> result = indexService.getIndexHotNews();
+        if(result.isSuccess()){
+            return responseData(BaseResponse.success(result.getData()));
+        }
+        return responseData(BaseResponse.success(Collections.emptyList()));
+    }
+
+    @RequestMapping("/searchGoods")
+    @ApiOperation(value = "查询首页热门新闻", httpMethod = "POST", response = BaseResponse.class)
+    private ResponseEntity<String> searchGoods(@RequestBody BaseRequest<SearchGoodsRequest> baseRequest){
+        baseRequest.validate();
+
+        Result<List<GoodsResponse>> result = indexService.searchGoods(baseRequest.getParam());
         if(result.isSuccess()){
             return responseData(BaseResponse.success(result.getData()));
         }
