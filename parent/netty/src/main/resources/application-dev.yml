@@ -1,0 +1,55 @@
+#server
+server:
+  port: 8700
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: utf-8
+
+netty:
+  port: 8707
+  boss:
+    thread:
+      count: 2
+  worker:
+    thread:
+      count: 100
+  keepAlive: true
+  backlog: 2048
+
+#spring
+spring:
+  application:
+    name: netty
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://106.14.47.3:3306/hui_project?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: mongoitdb@123
+    initialSize: 2
+    maxTotal: 10
+    maxActive: 5
+    maxWaitMillis: 60000
+    maxIdle: 3
+    minIdle: 1
+    removeAbandonedOnMaintenance: true
+    removeAbandonedTimeout: 60
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    numTestsPerEvictionRun: 2
+    validationQuery: select 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据 http://localhost:8080/druid/index.html admin/admin
+    useGlobalDataSourceStat: true

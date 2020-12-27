@@ -1,9 +1,0 @@
-package com.mongoit.common.dubbo.lanbitou;
-
-/**
- * @author Tainy
- * @date 2018/6/21 19:14
- */
-public interface LanbitouDubboService {
-
-}
