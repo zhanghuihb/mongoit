@@ -8,9 +8,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>./common</module>
-		<module>./mongo</module>
-		<module>./netty</module>
+		<module>../common</module>
+		<module>../mongo</module>
+		<module>../netty</module>
 	</modules>
 
 	<parent>
